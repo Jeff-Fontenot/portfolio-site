@@ -97,28 +97,30 @@ export const certifications: CertItem[] = [
     status: "earned"
   },
     {
-    title: "Microsoft AZ-104: Azure Administrator",
+    title: "Microsoft 900: Azure Fundamentals",
     subtitle: "Microsoft",
-    image: "/certs/az-104.png",
-    status: "in-progress",
-    targetDate: "2025-06-30"
+    image: "MS900.png",
+    href: "https://learn.microsoft.com/api/credentials/share/en-us/JeffFontenot-6473/FAEB69C5E2F46F70?sharingId=884197A7ED9D80B5",
+    credentialId: "FAEB69C5E2F46F70",
+    issuedOn: "2026-02-13",
+    status: "earned",
   },
   {
     title: "AWS Solutions Architect Associate",
     subtitle: "Amazon Web Services", 
-    image: "/certs/aws-saa.png",
-    status: "planned"
+    image: "SAA.png",
+    href: "https://www.credly.com/badges/16d1a773-460a-4681-9236-afc36c885998/public_url",
+    issuedOn: "2026-05-18",
+    credentialId: "16d1a773-460a-4681-9236-afc36c885998",
+    status: "earned"
   },
   {
-    title: "AWS SysOps Administrator Associate",
+    title: "AWS CloudOps Administrator Associate",
     subtitle: "Amazon Web Services", 
-    image: "/certs/aws-saa.png",
-    status: "planned"
-  },
-  {
-    title: "AWS Developer Associate",
-    subtitle: "Amazon Web Services", 
-    image: "/certs/aws-saa.png",
-    status: "planned"
+    image: "CloudOps.png",
+    href: "https://www.credly.com/badges/3a32a178-03ce-4432-8a55-1c1c3fb53ca2/public_url",
+    credentialId: "3a32a178-03ce-4432-8a55-1c1c3fb53ca2",
+    issuedOn: "2026-08-20",
+    status: "earned"
   },
 ];
