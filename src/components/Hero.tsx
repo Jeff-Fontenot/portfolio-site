@@ -25,10 +25,10 @@ export default function Hero() {
             {/* Logo */}
             <div className="flex justify-center md:justify-center">
               <Image
-                src="/Triquetra-Logo2.png"
+                src="/Triquetra-Updated.png"
                 alt="IT Odyssey Logo"
-                width={200}
-                height={200}
+                width={500}
+                height={500}
                 priority
                 className="h-50 w-auto"
               />
@@ -40,8 +40,8 @@ export default function Hero() {
             </h1>
 
             {/* Title */}
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-yellow-400">
-              Cloud | DevOps | Systems
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold gradient-text">
+              Cloud | DevOps | Platform
             </h2>
 
             {/* Subtitle/Description */}
@@ -49,7 +49,7 @@ export default function Hero() {
               Building hands-on cloud infrastructure, automation, and observability projects with AWS, Terraform, Linux, Docker, and Kubernetes.
             </p>
 
-            <p className="text-2xl md:text-2xl lg:text-3xl font-semibold text-yellow-400">
+            <p className="text-2xl md:text-2xl lg:text-3xl font-semibold gradient-text">
               Active Secret Security Clearance
             </p>
 

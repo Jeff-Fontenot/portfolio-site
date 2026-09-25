@@ -142,7 +142,7 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
             }`}
           >
             <Layers className="h-4 w-4" />
-            Coverflow
+            Badge
           </button>
           <button
             onClick={() => setIsListView(true)}

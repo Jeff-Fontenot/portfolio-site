@@ -97,7 +97,7 @@ export const certifications: CertItem[] = [
     status: "earned"
   },
     {
-    title: "Microsoft 900: Azure Fundamentals",
+    title: "AZ-900: Azure Fundamentals",
     subtitle: "Microsoft",
     image: "MS900.png",
     href: "https://learn.microsoft.com/api/credentials/share/en-us/JeffFontenot-6473/FAEB69C5E2F46F70?sharingId=884197A7ED9D80B5",
