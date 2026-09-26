@@ -1,6 +1,100 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
+import { Maximize2, X } from "lucide-react";
 import FadeIn from "./FadeIn";
 
+type LightboxImage = { src: string; alt: string };
+
+const degrees = [
+  {
+    degree: (
+      <>
+        Bachelor of Science in
+        <br />
+        Cloud Computing
+      </>
+    ),
+    school: "Western Governors University",
+    meta: "Conferred August 2026",
+    image: "/degrees/wgu-diploma.jpg",
+  },
+  {
+    degree: "Associate of General Studies" as ReactNode,
+    school: "Delgado Community College, New Orleans",
+    meta: "2010 · 4.0 GPA Honor Graduate",
+    image: "/degrees/delgado-diploma.jpg",
+  },
+];
+
+function DegreeCard({
+  degree,
+  school,
+  meta,
+  image,
+  onView,
+  delay,
+}: {
+  degree: ReactNode;
+  school: string;
+  meta: string;
+  image: string;
+  onView: (item: LightboxImage) => void;
+  delay: number;
+}) {
+  const alt = `${school} diploma`;
+
+  return (
+    <FadeIn delay={delay} className="lg:flex-1">
+      <div className="glass-container glass-hover h-full p-6">
+        <div className="flex h-full flex-col items-center gap-5 rounded-xl border-l-2 border-yellow-400/60 bg-white/[0.03] p-4 sm:flex-row sm:items-start">
+          <button
+            type="button"
+            onClick={() => onView({ src: image, alt })}
+            className="group relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl bg-white/[0.04] ring-1 ring-white/10 transition-colors hover:ring-yellow-300/40 sm:w-40"
+            aria-label={`View ${alt}`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={image}
+              alt={alt}
+              className="absolute inset-0 h-full w-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+            />
+            <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/50 group-hover:opacity-100">
+              <Maximize2 className="h-5 w-5 text-white" />
+            </span>
+          </button>
+
+          <div className="text-center sm:text-left">
+            <h4 className="mb-1 text-lg font-semibold leading-snug text-white">{degree}</h4>
+            <p className="mb-1 accent-blue font-medium">{school}</p>
+            <p className="text-sm text-white/60">{meta}</p>
+          </div>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+
 export default function Education() {
+  const [selected, setSelected] = useState<LightboxImage | null>(null);
+
+  useEffect(() => {
+    if (!selected) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selected]);
+
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto flex max-w-6xl flex-col items-center px-4 sm:px-6 lg:px-8">
@@ -18,50 +112,11 @@ export default function Education() {
         {/* Main Content Layout - Two Equal Columns */}
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Left Column - Formal Education */}
-          <FadeIn className="h-full">
-            <div className="glass-container h-full p-8">
-              <h3 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">
-                Formal Education
-              </h3>
-
-              {/* Current Bachelor's */}
-              <div className="space-y-6 mb-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-yellow-400 mb-2">
-                    Bachelor of Science in Cloud Computing
-                  </h4>
-                  <p className="text-white/70 mb-1">Western Governors University</p>
-                  <p className="text-sm font-medium gradient-text-blue mb-3">
-                    Expected January 2026 &middot; 101 of 121 Credits Complete
-                  </p>
-                  <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-yellow-400"
-                      style={{ width: "83%" }}
-                    />
-                  </div>
-                </div>
-
-                <div className="border-l-2 border-yellow-400/30 pl-6">
-                  <h4 className="text-lg font-semibold text-white mb-2">
-                    Associate of General Studies
-                  </h4>
-                  <p className="text-white/70 mb-1">Delgado Community College, New Orleans</p>
-                  <p className="text-sm text-emerald-300/90">2010 &middot; 4.0 GPA Honor Graduate</p>
-                </div>
-              </div>
-
-              {/* Future Plans */}
-              <div className="pt-6 border-t border-white/10">
-                <h5 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-3">
-                  Future Consideration
-                </h5>
-                <p className="text-white/60 text-sm">
-                  {`AI/ML Master's Program at WGU following Bachelor's completion`}
-                </p>
-              </div>
-            </div>
-          </FadeIn>
+          <div className="flex flex-col gap-6 lg:h-full">
+            {degrees.map((d, i) => (
+              <DegreeCard key={d.school} {...d} onView={setSelected} delay={i * 0.08} />
+            ))}
+          </div>
 
           {/* Right Column - Learning Philosophy */}
           <FadeIn delay={0.1} className="h-full">
@@ -70,15 +125,18 @@ export default function Education() {
 
               <div className="space-y-5">
                 <p className="text-white/70 leading-relaxed text-sm">
-                  While formal education provides the foundation, I believe the most valuable
-                  learning in technology comes from hands-on experimentation and real-world
-                  problem solving.
+                  My homelab runs on a Proxmox VE host virtualizing a mix of Ubuntu and Fedora
+                  machines, two LXC containers, and a 3-node k3s cluster for container
+                  orchestration practice. A dedicated services VM runs Traefik, Pi-hole with
+                  Unbound, Prometheus and Grafana, and Dashy, all defined in Docker Compose.
                 </p>
 
                 <p className="text-white/70 leading-relaxed text-sm">
-                  My homelab serves as a continuous learning environment where I explore
-                  cutting-edge technologies, test infrastructure patterns, and experiment with
-                  emerging tools before they become mainstream in enterprise environments.
+                  Traefik handles automatic service discovery and routing as containers come
+                  and go, Pi-hole and Unbound provide recursive, ad-filtered DNS for the whole
+                  network, and Tailscale gives me secure, URL-based remote access to everything
+                  without exposing a single port to the internet — the same patterns I&apos;d
+                  expect to defend in a production environment.
                 </p>
 
                 <div className="rounded-xl bg-white/[0.03] p-4 border-l-2 border-yellow-400/60">
@@ -91,22 +149,70 @@ export default function Education() {
                 </div>
 
                 <div className="flex flex-wrap gap-2 pt-1">
-                  {["Self-Directed Learning", "Homelab Experimentation", "Open Source"].map(
-                    (tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/70"
-                      >
-                        {tag}
-                      </span>
-                    )
-                  )}
+                  {["Proxmox", "Docker Compose", "Tailscale", "k3s"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/70"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
           </FadeIn>
         </div>
+
+        {/* Homelab Diagram */}
+        <FadeIn delay={0.15} className="w-full mt-6">
+          <div className="glass-container p-6 sm:p-8">
+            <h3 className="text-2xl font-bold text-white mb-3">Homelab Architecture</h3>
+            <p className="text-white/70 leading-relaxed text-sm max-w-3xl mb-6">
+              A visual breakdown of how it all connects — from my daily-driver laptop, over a
+              private Tailscale network, to the Proxmox host running my services, desktops, and
+              Kubernetes lab.
+            </p>
+            <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
+              <picture>
+                <source media="(min-width: 768px)" srcSet="/diagrams/homelab-architecture-wide.svg" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/diagrams/homelab-architecture-tall.svg"
+                  alt="Homelab architecture diagram"
+                  className="h-auto w-full"
+                />
+              </picture>
+            </div>
+          </div>
+        </FadeIn>
       </div>
+
+      {/* Lightbox */}
+      {selected && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={() => setSelected(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selected.alt}
+        >
+          <button
+            type="button"
+            onClick={() => setSelected(null)}
+            className="absolute right-4 top-4 text-white/70 transition-colors hover:text-white sm:right-6 sm:top-6"
+            aria-label="Close"
+          >
+            <X className="h-7 w-7" />
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={selected.src}
+            alt={selected.alt}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[85vh] max-w-[92vw] rounded-lg shadow-2xl ring-1 ring-white/10"
+          />
+        </div>
+      )}
     </section>
   );
 }

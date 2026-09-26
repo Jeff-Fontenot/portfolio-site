@@ -5,20 +5,20 @@ import FadeIn from "./FadeIn";
 
 const projects = [
   {
-    title: "Cloud Resume Challenge 2.0",
-    description:
-      "Rebuilt the Cloud Resume Challenge with a modern Next.js + Tailwind stack, leveraging server-side rendering for performance and interactivity. Integrated dynamic features for resume updates and portfolio visibility, aligning with enterprise-grade web development practices.",
-    tech: ["Next.js", "Tailwind", "AWS Lambda", "DynamoDB", "Terraform", "GitHub Actions"],
-    link: "https://github.com/Jeff-Fontenot",
-    span: "md:col-span-3",
-  },
-  {
     title: "Kubernetes Platform",
     description:
       "Deployed a production-style k3s cluster with AWS-hosted master and homelab worker nodes. Automated provisioning and security groups using Terraform. Integrated Prometheus & Grafana for real-time monitoring and alerting, demonstrating hybrid-cloud resiliency and observability.",
     tech: ["Kubernetes", "Terraform", "Ansible"],
     link: "https://github.com/Jeff-Fontenot",
     span: "md:col-span-2",
+  },
+  {
+    title: "Cloud Resume Challenge 2.0",
+    description:
+      "Rebuilt the Cloud Resume Challenge with a modern Next.js + Tailwind stack, leveraging server-side rendering for performance and interactivity. Integrated dynamic features for resume updates and portfolio visibility, aligning with enterprise-grade web development practices.",
+    tech: ["Next.js", "Tailwind", "AWS Lambda", "DynamoDB", "Terraform", "GitHub Actions"],
+    link: "https://github.com/Jeff-Fontenot",
+    span: "md:col-span-3",
   },
   {
     title: "Enterprise Grade Homelab",

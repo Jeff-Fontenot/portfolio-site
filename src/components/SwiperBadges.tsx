@@ -61,7 +61,7 @@ function CertCard({ item, isListView = false }: { item: CertItem, isListView?: b
           </div>
 
           {item.subtitle && (
-            <p className={`${isListView ? 'text-xs' : 'text-sm'} font-medium gradient-text-blue mb-2`}>{item.subtitle}</p>
+            <p className={`${isListView ? 'text-xs' : 'text-sm'} font-medium accent-blue mb-2`}>{item.subtitle}</p>
           )}
 
           {item.issuedOn && (
@@ -233,7 +233,7 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
                       {item.status && <StatusChip status={item.status} />}
                     </div>
                     <div className="flex items-center gap-4 text-sm">
-                      <span className="font-medium gradient-text-blue">{item.subtitle}</span>
+                      <span className="font-medium accent-blue">{item.subtitle}</span>
                       {item.issuedOn && (
                         <span className="text-white/70">
                           Issued {new Date(item.issuedOn).toLocaleDateString(undefined, { year: 'numeric', month: 'short' })}

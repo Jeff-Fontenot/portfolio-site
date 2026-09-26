@@ -148,12 +148,10 @@ body::before {
   -webkit-text-fill-color: transparent;
 }
 
-/* Secondary accent — cool blue from the triquetra mark, reserved for informational/metadata text */
-.gradient-text-blue {
-  background: linear-gradient(135deg, #1d4ed8 0%, #1d4ed8 55%, #60a5fa 65%, #1d4ed8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Secondary accent — legible solid blue sampled directly from the triquetra mark's
+   highlight edge, reserved for informational/metadata text (credential issuers, etc.) */
+.accent-blue {
+  color: #24aff5;
 }
 
 /* Floating dots background */
