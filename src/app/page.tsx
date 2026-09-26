@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import SwiperBadges from "@/components/SwiperBadges";
 import { certifications } from "@/components/certifications";
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <Hero />
+        <Skills />
         {/* Certifications Section */}
         <section className="pt-8 pb-14">
           <div className="text-center">

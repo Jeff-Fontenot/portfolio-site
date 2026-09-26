@@ -1,0 +1,33 @@
+import FadeIn from "./FadeIn";
+import { skills } from "./skills";
+
+export default function Skills() {
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto flex max-w-5xl flex-col items-center px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <FadeIn className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+            Technical <span className="gradient-text">Skills</span>
+          </h2>
+          <p className="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto">
+            The tools and technologies I use to build, automate, and monitor infrastructure.
+          </p>
+        </FadeIn>
+
+        {/* Skills Grid */}
+        <div className="flex w-full flex-wrap justify-center gap-4">
+          {skills.map((skill, i) => (
+            <FadeIn key={skill.name} delay={i * 0.04}>
+              <div className="glass-container glass-hover flex w-32 flex-col items-center gap-3 p-5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={skill.icon} alt={skill.name} className="h-10 w-10" />
+                <span className="text-center text-sm text-white/70">{skill.name}</span>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
