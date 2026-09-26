@@ -125,18 +125,10 @@ export default function Education() {
 
               <div className="space-y-5">
                 <p className="text-white/70 leading-relaxed text-sm">
-                  My homelab runs on a Proxmox VE host virtualizing a mix of Ubuntu and Fedora
-                  machines, two LXC containers, and a 3-node k3s cluster for container
-                  orchestration practice. A dedicated services VM runs Traefik, Pi-hole with
-                  Unbound, Prometheus and Grafana, and Dashy, all defined in Docker Compose.
-                </p>
-
-                <p className="text-white/70 leading-relaxed text-sm">
-                  Traefik handles automatic service discovery and routing as containers come
-                  and go, Pi-hole and Unbound provide recursive, ad-filtered DNS for the whole
-                  network, and Tailscale gives me secure, URL-based remote access to everything
-                  without exposing a single port to the internet — the same patterns I&apos;d
-                  expect to defend in a production environment.
+                  Designed and deployed containerized services with Docker/Portainer, fronted
+                  by Traefik reverse proxy with automated TLS. Implemented Prometheus/Grafana
+                  monitoring and recursive DNS filtering with PiHole and Unbound, creating a
+                  secure production-style sandbox for testing cloud-native architectures.
                 </p>
 
                 <div className="rounded-xl bg-white/[0.03] p-4 border-l-2 border-yellow-400/60">
@@ -149,7 +141,7 @@ export default function Education() {
                 </div>
 
                 <div className="flex flex-wrap gap-2 pt-1">
-                  {["Proxmox", "Docker Compose", "Tailscale", "k3s"].map((tag) => (
+                  {["Proxmox", "Ubuntu Server", "Docker", "Traefik", "Zero Trust", "Prometheus", "Grafana"].map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/70"

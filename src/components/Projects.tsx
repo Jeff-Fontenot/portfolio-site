@@ -13,19 +13,19 @@ const projects = [
     span: "md:col-span-2",
   },
   {
-    title: "Cloud Resume Challenge 2.0",
+    title: "WakeTrail",
     description:
-      "Rebuilt the Cloud Resume Challenge with a modern Next.js + Tailwind stack, leveraging server-side rendering for performance and interactivity. Integrated dynamic features for resume updates and portfolio visibility, aligning with enterprise-grade web development practices.",
-    tech: ["Next.js", "Tailwind", "AWS Lambda", "DynamoDB", "Terraform", "GitHub Actions"],
-    link: "https://github.com/Jeff-Fontenot",
+      "Built a Go-based CLI that records engineering activity and correlates it with the infrastructure state changes that follow, creating a forensic timeline for troubleshooting and incident response. Captures Git context, command execution, and Docker state transitions into a local SQLite event store, with CI enforcing formatting, vetting, and test coverage on every push.",
+    tech: ["Go", "Cobra", "SQLite", "Docker", "Git", "GitHub Actions"],
+    link: "https://github.com/it-odyssey/waketrail",
     span: "md:col-span-3",
   },
   {
-    title: "Enterprise Grade Homelab",
+    title: "Hybrid Cloud Disaster Recovery",
     description:
-      "Designed and deployed containerized services with Docker/Portainer, fronted by Traefik reverse proxy with automated TLS. Implemented Prometheus/Grafana monitoring and recursive DNS filtering with PiHole and Unbound, creating a secure production-style sandbox for testing cloud-native architectures.",
-    tech: ["Proxmox", "Ubuntu Server", "Docker", "Traefik", "Zero Trust", "Prometheus", "Grafana"],
-    link: "https://github.com/Jeff-Fontenot",
+      "Engineered a hybrid disaster-recovery solution for a containerized Flask/PostgreSQL application running on-prem in Proxmox, with hourly backups shipped to Amazon S3. A single terraform apply provisions AWS recovery infrastructure through an IAM instance profile and automatically restores the database, validated at roughly a 1-hour RPO and a 3:55 RTO.",
+    tech: ["Terraform", "AWS", "EC2", "S3", "Docker", "PostgreSQL", "Flask"],
+    link: "https://github.com/Jeff-Fontenot/d342-hybrid-cloud-disaster-recovery",
     span: "md:col-span-3",
   },
   {

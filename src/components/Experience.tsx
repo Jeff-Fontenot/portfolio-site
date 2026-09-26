@@ -2,52 +2,34 @@ import FadeIn from "./FadeIn";
 
 const responsibilities = [
   {
-    title: "Incident Management & Troubleshooting",
+    title: "Enterprise Troubleshooting",
     detail:
-      "Handle 20–30 enterprise support calls daily via Cisco Finesse, conducting root cause analysis and detailed documentation in Remedy with complete audit trails.",
+      "Resolve authentication, DNS, CAC certificate, proxy, domain-trust, endpoint, and hybrid identity issues within a mission-critical federal enterprise environment.",
   },
   {
-    title: "Identity & Access Management",
+    title: "Incident Operations",
     detail:
-      "Manage user lifecycle and access provisioning using ADAC, ADUC, and Entra ID, including group membership validation, role assignments, and cross-forest authentication issues.",
+      "Manage 20–30 support calls daily while investigating technical issues, maintaining detailed Remedy incident records, and escalating problems with clear troubleshooting context.",
   },
   {
-    title: "Hybrid Cloud Operations",
+    title: "Account Access & Authorization",
     detail:
-      "Troubleshoot Exchange hybrid configurations, validating SMTP proxy/target addresses, ECP redirection, and Azure AD Connect sync issues.",
+      "Review account status, attributes, OU placement, and group membership in Active Directory; restore deprovisioned accounts only after validating required documentation and authorization under established procedures.",
   },
   {
-    title: "Privileged Access Management",
-    detail: "Use Azure PIM daily for just-in-time elevation to manage O365, Exchange, and Azure AD roles.",
-  },
-  {
-    title: "License & Service Management",
+    title: "Hybrid Microsoft Services",
     detail:
-      "Resolve GAL mismatches and distribution list visibility problems; validate O365 licensing and service entitlements based on security group memberships.",
+      "Troubleshoot Exchange Online and hybrid messaging issues, including SMTP proxy/target addresses, licensing, GAL visibility, and Azure AD Connect synchronization.",
   },
   {
-    title: "Infrastructure Support",
+    title: "Automation & Process Improvement",
     detail:
-      "Perform network diagnostics (IP conflict, proxy/PAC config, domain trust failures), certificate checks for CAC logins, and Outlook optimization/cache resets.",
+      "Built a menu-driven PowerShell prototype that consolidated recurring Active Directory support workflows, demonstrating opportunities for faster, more consistent incident handling.",
   },
   {
-    title: "Mobile Device Management",
-    detail: "Use Intune for device inventory, IMEI lookup, and basic configuration management of mobile assets.",
-  },
-  {
-    title: "Security Compliance",
+    title: "Documentation & Communication",
     detail:
-      "Review SAAR forms and DoD training certificates to validate account requests and enforce role-based access controls.",
-  },
-  {
-    title: "Process Automation",
-    detail:
-      "Developed a menu-based PowerShell tool for user, workstation, and printer lookup for call documentation automation, improving queries from 3-4 minutes to several seconds per service call.",
-  },
-  {
-    title: "Professional Development",
-    detail:
-      "Pursuing certifications in Azure (AZ-104), AWS (Solutions Architect, SysOps, Developer), and CCSP to transition into DevOps and cloud engineering roles.",
+      "Document troubleshooting procedures and clearly communicate technical findings, escalation context, and resolution steps to end users and internal support teams.",
   },
 ];
 
@@ -73,7 +55,7 @@ export default function Experience() {
               Enterprise Service Desk Analyst
             </h3>
             <p className="text-lg text-yellow-400 mb-1">
-              Leidos via TEKSystems &middot; Marine Corps Enterprise Support
+              TEKsystems supporting Leidos &middot; Marine Corps Enterprise Network
             </p>
             <p className="text-white/50 text-sm">Jan 2025 – Present</p>
           </div>
@@ -87,7 +69,8 @@ export default function Experience() {
           <div className="mb-6 pt-4 border-t border-white/10">
             <p className="text-white/70 text-sm leading-relaxed">
               <span className="font-semibold text-white">Environment: </span>
-              Hybrid Microsoft Enterprise — Active Directory, Azure AD, Exchange Online, O365, Intune
+              Active Directory, Microsoft 365, Exchange Online, Intune, BMC Helix, CAC authentication,
+              hybrid Microsoft services
             </p>
           </div>
 
