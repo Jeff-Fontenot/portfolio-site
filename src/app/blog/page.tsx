@@ -5,19 +5,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getPostsWithPreviews } from "@/lib/notion";
 
-
-
-
 export const revalidate = 300;
 
 function BlogHero() {
   return (
-    <section className="relative min-h-[42vh] md:min-h-[50vh] overflow-hidden bg-slate-950 pt-28">
+    <section className="relative min-h-[42vh] md:min-h-[50vh] overflow-hidden pt-28">
       <div className="mx-auto max-w-6xl px-4">
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white">
+        <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight text-white">
           Odyssey <span className="gradient-text">Blog</span>
         </h1>
-        <p className="mt-3 max-w-2xl text-slate-300">
+        <p className="mt-3 max-w-2xl text-white/60">
           Insights from an endless journey of growth and discovery.
         </p>
       </div>
@@ -33,10 +30,10 @@ export default async function BlogIndexPage() {
       <Header />
       <BlogHero />
 
-      <main className="bg-slate-950">
+      <main>
         <section className="mx-auto max-w-6xl px-4 pb-16 -mt-10">
           {posts.length === 0 ? (
-            <div className="glass-container rounded-3xl p-6 text-slate-300">
+            <div className="glass-container p-6 text-white/60">
               No posts yet. Check back soon.
             </div>
           ) : (
@@ -45,15 +42,8 @@ export default async function BlogIndexPage() {
                 <Link
                   key={p.id}
                   href={`/blog/${p.slug}`}
-                  className="group relative overflow-hidden rounded-2xl glass-container glass-container-before
-           transition-transform duration-300 hover:scale-[1.06] min-h-[400px] flex flex-col"
+                  className="glass-container glass-hover group relative flex min-h-[400px] flex-col overflow-hidden"
                 >
-                  {/* ring / glow on hover */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent transition
-                               group-hover:ring-yellow-400"
-                  />
                   {p.cover && (
                     <div className="aspect-[16/9] w-full overflow-hidden">
                       <Image
@@ -62,31 +52,18 @@ export default async function BlogIndexPage() {
                         width={1200}
                         height={630}
                         unoptimized={true}
-                        className="h-fit w-fit object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       />
                     </div>
                   )}
 
-                  <div className="p-3 relative">
-                   {/* {p.tags?.length > 0 && (
-                      <div className="flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
-                        {p.tags.map((t: string) => (
-                          <span
-                            key={t}
-                            className="rounded-full border border-slate-500 px-2.5 py-0.5 text-slate-300"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    )} */}
-
-                    <h2 className="mt-5 text-lg font-semibold text-yellow-400 group-hover:underline">
+                  <div className="relative p-5">
+                    <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-yellow-300">
                       {p.title}
                     </h2>
 
                     {p.preview && (
-                      <p className="mt-2.5 line-clamp-4 text-sm text-slate-300">
+                      <p className="mt-2.5 line-clamp-4 text-sm text-white/60">
                         {p.preview}
                       </p>
                     )}

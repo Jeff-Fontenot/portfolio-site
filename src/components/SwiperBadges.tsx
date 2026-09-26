@@ -15,12 +15,17 @@ import 'swiper/css/pagination';
 import { CertItem } from '@/types/certifications';
 
 function StatusChip({ status }: { status: string }) {
+  // "Earned" is the default, expected state for every credential here — the
+  // Verify link already signals that, so only non-earned statuses get a chip.
+  if (status === "earned") {
+    return null;
+  }
+
   const getStatusStyle = (status: string) => {
     switch (status) {
-      case "earned": return "bg-emerald-600 text-white";
-      case "in-progress": return "bg-amber-500 text-black";
-      case "planned": return "bg-slate-400 text-white";
-      default: return "bg-slate-400 text-white";
+      case "in-progress": return "bg-yellow-400/15 text-yellow-300 ring-1 ring-yellow-400/25";
+      case "planned": return "bg-white/10 text-white/60 ring-1 ring-white/15";
+      default: return "bg-white/10 text-white/60 ring-1 ring-white/15";
     }
   };
 
@@ -35,9 +40,9 @@ function CertCard({ item, isListView = false }: { item: CertItem, isListView?: b
   const cardClass = isListView ? "h-[200px] w-full" : "h-[375px] w-[250px] mx-auto";
 
   const CardInner = (
-    <div className={`relative ${cardClass} overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl group`}>
+    <div className={`glass-container glass-hover relative ${cardClass} overflow-hidden group`}>
       {/* Badge Image */}
-      <div className={`${isListView ? 'h-28' : 'h-48'} w-full bg-gradient-to-br from-blue-950 to-slate-950 flex items-center justify-center`}>
+      <div className={`${isListView ? 'h-28' : 'h-48'} w-full bg-gradient-to-br from-white/[0.04] to-transparent flex items-center justify-center`}>
         {item.image ? (
           <img src={item.image} alt={item.title} className="h-full w-full object-contain p-4" />
         ) : (
@@ -56,7 +61,7 @@ function CertCard({ item, isListView = false }: { item: CertItem, isListView?: b
           </div>
 
           {item.subtitle && (
-            <p className={`${isListView ? 'text-xs' : 'text-sm'} text-white/70 mb-2`}>{item.subtitle}</p>
+            <p className={`${isListView ? 'text-xs' : 'text-sm'} font-medium gradient-text-blue mb-2`}>{item.subtitle}</p>
           )}
 
           {item.issuedOn && (
@@ -120,25 +125,26 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
   return (
     <section className="relative mx-auto w-full max-w-5xl px-8">
       {/* Header */}
-      <div className="flex flex-col items-center text-center mb-16">       
-        <h2 className="text-4xl md:text-6xl font-bold mb-6">
+      <div className="flex flex-col items-center text-center mb-16">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
           Technical{' '}
-          <span className="gradient-text">Certification</span>
+          <span className="gradient-text">Certifications</span>
         </h2>
-        <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-          A showcase of my commitment to continuous learning and professional growth through industry-recognized certifications
+        <p className="text-lg text-white/60 leading-relaxed max-w-2xl">
+          A showcase of my commitment to continuous learning and professional growth through
+          industry-recognized certifications.
         </p>
       </div>
 
       {/* Toggle Button - Centered below header */}
       <div className="flex justify-center mb-8">
-        <div className="flex items-center gap-2 glass-container p-1">
+        <div className="flex items-center gap-1 glass-container p-1">
           <button
             onClick={() => setIsListView(false)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
-              !isListView 
-                ? 'bg-blue-600 text-white shadow-lg' 
-                : 'text-white/70 hover:text-white hover:bg-white/10'
+            className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all ${
+              !isListView
+                ? 'bg-yellow-400 text-[#08090d]'
+                : 'text-white/60 hover:text-white'
             }`}
           >
             <Layers className="h-4 w-4" />
@@ -146,10 +152,10 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
           </button>
           <button
             onClick={() => setIsListView(true)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
-              isListView 
-                ? 'bg-blue-600 text-white shadow-lg' 
-                : 'text-white/70 hover:text-white hover:bg-white/10'
+            className={`flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all ${
+              isListView
+                ? 'bg-yellow-400 text-[#08090d]'
+                : 'text-white/60 hover:text-white'
             }`}
           >
             <Grid3X3 className="h-4 w-4" />
@@ -187,7 +193,7 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
             }}
             modules={[EffectCoverflow, Navigation, Pagination]}
             className="certification-swiper"
-            style={{ padding: '20px 0' }}
+            style={{ padding: '20px 0 44px' }}
           >
             {items.map((item, index) => (
               <SwiperSlide key={index}>
@@ -197,8 +203,8 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <div className="swiper-button-prev glass-container !left-4 !w-12 !h-12 !rounded-full bg-white/5 backdrop-blur-md border border-white/10 after:!text-white after:!text-lg after:!font-bold"></div>
-          <div className="swiper-button-next glass-container !right-4 !w-12 !h-12 !rounded-full bg-white/5 backdrop-blur-md border border-white/10 after:!text-white after:!text-lg after:!font-bold"></div>
+          <div className="swiper-button-prev glass-container glass-hover !left-4 !w-11 !h-11 !rounded-full after:!text-white after:!text-base after:!font-bold"></div>
+          <div className="swiper-button-next glass-container glass-hover !right-4 !w-11 !h-11 !rounded-full after:!text-white after:!text-base after:!font-bold"></div>
         </>
       ) : (
         /* List View - Single Glass Container */
@@ -208,7 +214,7 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
               <div key={index} className="flex items-center justify-between py-3 border-b border-white/10 last:border-b-0">
                 <div className="flex items-center gap-4 flex-1">
                   {/* Small Badge Icon */}
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-950 to-slate-950 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-white/[0.04] ring-1 ring-white/10 flex items-center justify-center flex-shrink-0">
                     {item.image ? (
                       <img 
                         src={item.image} 
@@ -226,10 +232,10 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
                       <h3 className="text-white font-semibold">{item.title}</h3>
                       {item.status && <StatusChip status={item.status} />}
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-white/70">
-                      <span>{item.subtitle}</span>
+                    <div className="flex items-center gap-4 text-sm">
+                      <span className="font-medium gradient-text-blue">{item.subtitle}</span>
                       {item.issuedOn && (
-                        <span>
+                        <span className="text-white/70">
                           Issued {new Date(item.issuedOn).toLocaleDateString(undefined, { year: 'numeric', month: 'short' })}
                         </span>
                       )}
@@ -242,8 +248,8 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Open official credential for ${item.title}`}
-                          className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm
-                                    bg-slate-800 hover:bg-slate-700 ring-1 ring-white/10 text-white"
+                          className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm
+                                    bg-white/[0.04] hover:bg-white/10 ring-1 ring-white/10 text-white transition-colors"
                         >
                           <BadgeCheck className="h-4 w-4" />
                           Verify

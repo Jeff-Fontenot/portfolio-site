@@ -1,9 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
+
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+
+const container: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.09, delayChildren: 0.05 },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
+};
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
       {/* Mobile Background Portrait */}
       <div className="absolute inset-0 md:hidden">
         <Image
@@ -11,62 +29,65 @@ export default function Hero() {
           alt="Jeff Fontenot"
           fill
           priority
-          className="object-cover opacity-30 filter grayscale"
+          className="object-cover opacity-25 filter grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#08090d] via-[#08090d]/70 to-transparent" />
       </div>
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 items-center">
-
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 items-center"
+        >
           {/* Left Column - Logo & Text Stack */}
-          <div className="text-center space-y-2">
+          <div className="text-center space-y-4">
             {/* Logo */}
-            <div className="flex justify-center md:justify-center">
+            <motion.div variants={item} className="flex justify-center">
               <Image
                 src="/Triquetra-Updated.png"
                 alt="IT Odyssey Logo"
                 width={500}
                 height={500}
                 priority
-                className="h-50 w-auto"
+                className="h-36 md:h-44 w-auto"
               />
-            </div>
+            </motion.div>
 
             {/* Name */}
-            <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold gradient-text leading-tight">
+            <motion.h1
+              variants={item}
+              className="text-5xl md:text-7xl font-bold tracking-tight gradient-text leading-[1.05]"
+            >
               Jeff Fontenot
-            </h1>
+            </motion.h1>
 
             {/* Title */}
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold gradient-text">
-              Cloud | DevOps | Platform
-            </h2>
+            <motion.h2 variants={item} className="text-xl md:text-2xl font-medium text-white/80">
+              Cloud&nbsp;&middot;&nbsp;DevOps&nbsp;&middot;&nbsp;Platform
+            </motion.h2>
 
             {/* Subtitle/Description */}
-            <p className="text-lg text-center text-white/80 font-semibold leading-relaxed max-w-6xl mx-auto">
-              Building hands-on cloud infrastructure, automation, and observability projects with AWS, Terraform, Linux, Docker, and Kubernetes.
-            </p>
+            <motion.p
+              variants={item}
+              className="text-base md:text-lg text-white/60 leading-relaxed max-w-lg mx-auto"
+            >
+              Building hands-on cloud infrastructure, automation, and observability
+              projects with AWS, Terraform, Linux, Docker, and Kubernetes.
+            </motion.p>
 
-            <p className="text-2xl md:text-2xl lg:text-3xl font-semibold gradient-text">
+            <motion.p variants={item} className="text-2xl md:text-2xl lg:text-3xl font-semibold gradient-text">
               Active Secret Security Clearance
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Link
-                href="/projects"
-                className="
-                  inline-flex items-center justify-center
-                  w-full sm:w-auto
-                  rounded-full px-6 py-3
-                  bg-yellow-400 text-slate-950 font-semibold
-                  transition-all
-                  hover:bg-yellow-300
-                  hover:shadow-[0_0_20px_rgba(250,204,21,0.6)]
-                  focus:outline-none focus:ring-2 focus:ring-yellow-300/50 focus:ring-offset-2 focus:ring-offset-slate-950"
-              >
+            <motion.div
+              variants={item}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            >
+              <Link href="/projects" className="btn-primary w-full sm:w-auto px-6 py-3">
                 View Projects
               </Link>
 
@@ -74,26 +95,18 @@ export default function Hero() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  inline-flex items-center justify-center
-                  w-full sm:w-auto
-                  rounded-full px-6 py-3
-                  border border-yellow-200/40
-                  bg-blue-200/10 text-yellow-300 font-semibold
-                  outline-none
-                  transition-all
-                  focus:ring-offset-3
-                  focus:ring-2 focus:ring-yellow-300/30
-                  hover:animate-pulse
-                  hover:shadow-[0_0_15px_rgba(250,204,21,0.8)]"
+                className="btn-secondary w-full sm:w-auto px-6 py-3"
               >
                 Download Resume
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Column - Desktop Portrait */}
-          <div className="hidden md:flex justify-center items-center">
+          <motion.div
+            variants={item}
+            className="hidden md:flex justify-center items-center"
+          >
             <div className="relative w-96 h-96 lg:w-[500px] lg:h-[600px]">
               <Image
                 src="/B&W_Ghost_Portrait.png"
@@ -103,9 +116,8 @@ export default function Hero() {
                 className="object-cover rounded-2xl opacity-60 filter grayscale shadow-2xl"
               />
             </div>
-          </div>
-
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import ComingSoon from "@/components/ComingSoon";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Projects — Coming Soon",
@@ -7,9 +9,15 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <ComingSoon
-      title="Projects"
-      blurb="A portfolio index with write-ups, screenshots, architecture diagrams, and links to live demos & GitHub."
-    />
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <ComingSoon
+          title="Projects"
+          blurb="A portfolio index with write-ups, screenshots, architecture diagrams, and links to live demos & GitHub."
+        />
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -11,21 +11,21 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-slate-950">
-      <Hero />
-      {/* Certifications Section */}
-      <section className="pt-8 pb-20 bg-slate-950">
-        <div className="text-center">
-          <div className="flex justify-center">
-            <SwiperBadges items={certifications} />
+      <main className="min-h-screen">
+        <Hero />
+        {/* Certifications Section */}
+        <section className="pt-8 pb-14">
+          <div className="text-center">
+            <div className="flex justify-center">
+              <SwiperBadges items={certifications} />
+            </div>
           </div>
-        </div>
-      </section>
-      <Projects />
-      <Experience />
-      <Education />
-      <Footer />
-    </main>
+        </section>
+        <Projects />
+        <Experience />
+        <Education />
+        <Footer />
+      </main>
     </>
   );
 }

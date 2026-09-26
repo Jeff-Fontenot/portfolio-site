@@ -16,18 +16,18 @@ export const metadata: Metadata = {
   description: "Next Gen Cloud resume created with Next.js, Tailwind CSS, and TypeScript.",
 };
 
+export const viewport = {
+  themeColor: "#08090d",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

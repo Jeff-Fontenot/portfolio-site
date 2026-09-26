@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   return (
     <>
     <Header />
-    <main className="bg-slate-950">
+    <main>
       {/* Centered mini-hero */}
       <section className="relative min-h-[30vh] md:min-h-[36vh] overflow-hidden pt-28">
         <div className="mx-auto max-w-6xl px-4 text-center">
@@ -96,10 +96,10 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           >
             ← All posts
           </Link>
-          <h1 className="my-5 text-4xl md:text-5xl font-extrabold leading-tight gradient-text">
+          <h1 className="my-5 text-4xl md:text-5xl font-bold tracking-tight leading-tight gradient-text">
             {post.title}
           </h1>
-          <h3 className="mb-10 mx-auto text-2xl max-w-2xl text-slate-400">
+          <h3 className="mb-10 mx-auto text-xl max-w-2xl text-white/60 font-normal">
             {post.description}
           </h3>
         </div>
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
       {/* Cover */}
       {post.cover && (
         <div className="mx-auto -mt-6 max-w-3xl px-4">
-          <div className="overflow-hidden rounded-2xl glass-container">
+          <div className="glass-container overflow-hidden">
             <Image
               src={post.cover}
               alt={post.title}
@@ -124,15 +124,15 @@ export default async function BlogPostPage({ params }: { params: Params }) {
 
       {/* Article */}
       <section className="mx-auto max-w-3xl px-4 pt-8">
-        <article className="glass-container glass-container-before rounded-2xl p-6 md:p-8">
+        <article className="glass-container p-6 md:p-8">
           <div
             className="prose prose-invert max-w-none
                        prose-a:text-yellow-400
-                       prose-headings:text-yellow-400 prose-headings:font-bold
+                       prose-headings:text-yellow-400 prose-headings:font-bold prose-headings:tracking-tight
                        prose-h2:text-2xl md:prose-h2:text-3xl
                        prose-h3:text-xl md:prose-h3:text-2xl
                        prose-blockquote:border-yellow-400/40
-                       prose-hr:border-slate-700"
+                       prose-hr:border-white/10"
           >
             <PostContent blocks={blocks} />
           </div>
@@ -144,9 +144,9 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             {prev && (
               <Link
                 href={`/blog/${prev.slug}`}
-                className="block rounded-xl glass-container p-4 hover:underline"
+                className="glass-container glass-hover block p-4 hover:underline"
               >
-                <div className="text-xs text-slate-400">← Newer</div>
+                <div className="text-xs text-white/50">← Newer</div>
                 <div className="mt-1 font-medium text-yellow-400">
                   {prev.title}
                 </div>
@@ -157,9 +157,9 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             {next && (
               <Link
                 href={`/blog/${next.slug}`}
-                className="block rounded-xl glass-container p-4 hover:underline"
+                className="glass-container glass-hover block p-4 hover:underline"
               >
-                <div className="text-xs text-slate-400">Older →</div>
+                <div className="text-xs text-white/50">Older →</div>
                 <div className="mt-1 font-medium text-yellow-400">
                   {next.title}
                 </div>
