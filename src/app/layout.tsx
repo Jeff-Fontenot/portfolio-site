@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "Jeff Fontenot's Resume",
-  description: "Next Gen Cloud resume created with Next.js, Tailwind CSS, and TypeScript.",
+  title: "Jeff Fontenot | Cloud & DevOps Engineer",
+  description: "A modern portfolio site for Jeff Fontenot. Currently seeking new opportunities in Cloud and DevOps engineering.",
 };
 
 export const viewport = {
