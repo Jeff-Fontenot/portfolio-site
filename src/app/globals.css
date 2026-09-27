@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 @tailwind base;
 @tailwind components;
@@ -152,6 +153,14 @@ body::before {
    highlight edge, reserved for informational/metadata text (credential issuers, etc.) */
 .accent-blue {
   color: #24aff5;
+}
+
+/* Shiki emits its own inline background/padding on <pre> — defer to our panel instead */
+.shiki-code pre,
+.shiki-code pre.shiki {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Floating dots background */

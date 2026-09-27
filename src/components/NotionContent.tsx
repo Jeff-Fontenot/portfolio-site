@@ -1,5 +1,7 @@
 // Shared renderer for basic Notion block content, used by the blog and the About page.
 
+import CodeBlock from "./CodeBlock";
+
 export interface NotionRichText {
   plain_text: string;
   href?: string;
@@ -58,30 +60,39 @@ export default function NotionContent({ blocks }: { blocks: NotionBlock[] }) {
                 )}
               </p>
             );
-          case "bulleted_list_item":
+          case "bulleted_list_item": {
+            const children = (b.children as NotionBlock[]) || [];
             return (
               <ul key={b.id}>
-                <li>{(data?.rich_text as NotionRichText[])?.map((t, i) => <Span key={i} t={t} />)}</li>
+                <li>
+                  {(data?.rich_text as NotionRichText[])?.map((t, i) => <Span key={i} t={t} />)}
+                  {children.length > 0 && <NotionContent blocks={children} />}
+                </li>
               </ul>
             );
-          case "numbered_list_item":
+          }
+          case "numbered_list_item": {
+            const children = (b.children as NotionBlock[]) || [];
             return (
               <ol key={b.id}>
-                <li>{(data?.rich_text as NotionRichText[])?.map((t, i) => <Span key={i} t={t} />)}</li>
+                <li>
+                  {(data?.rich_text as NotionRichText[])?.map((t, i) => <Span key={i} t={t} />)}
+                  {children.length > 0 && <NotionContent blocks={children} />}
+                </li>
               </ol>
             );
+          }
           case "quote":
             return (
               <blockquote key={b.id}>
                 {(data?.rich_text as NotionRichText[])?.map((t, i) => <Span key={i} t={t} />)}
               </blockquote>
             );
-          case "code":
-            return (
-              <pre key={b.id}>
-                <code>{(data?.rich_text as NotionRichText[])?.map((t) => t.plain_text).join("") || ""}</code>
-              </pre>
-            );
+          case "code": {
+            const code = (data?.rich_text as NotionRichText[])?.map((t) => t.plain_text).join("") || "";
+            const language = data?.language as string | undefined;
+            return <CodeBlock key={b.id} code={code} language={language} />;
+          }
           case "image": {
             const imageData = data as Record<string, unknown>;
             const imgType = imageData?.type as string;

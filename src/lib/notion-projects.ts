@@ -2,7 +2,12 @@ import { Client } from "@notionhq/client";
 import { fetchBlocksRecursive } from "./notion-blocks";
 
 const notion = new Client({ auth: process.env.NOTION_PROJECTS_TOKEN });
-const databaseId = process.env.NOTION_PROJECTS_DATABASE_ID!;
+const databaseId = process.env.NOTION_PROJECTS_DATABASE_ID;
+
+// Guard against a missing/misconfigured integration (e.g. an environment
+// that hasn't set these yet) so it degrades to "no projects" instead of
+// failing the entire production build.
+const isConfigured = !!(process.env.NOTION_PROJECTS_TOKEN && databaseId);
 
 export type Project = {
   id: string;
@@ -51,6 +56,8 @@ function mapPageToProject(page: any): Project | null {
 }
 
 export async function getProjects(): Promise<Project[]> {
+  if (!isConfigured) return [];
+
   const res = await notion.databases.query({
     database_id: databaseId,
     filter: { property: "status", select: { equals: "published" } },
@@ -61,6 +68,8 @@ export async function getProjects(): Promise<Project[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  if (!isConfigured) return null;
+
   const res = await notion.databases.query({
     database_id: databaseId,
     filter: {
@@ -77,5 +86,6 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 }
 
 export async function getProjectBlocks(pageId: string) {
+  if (!isConfigured) return [];
   return fetchBlocksRecursive(notion, pageId);
 }
