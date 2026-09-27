@@ -6,6 +6,7 @@ import SwiperBadges from "@/components/SwiperBadges";
 import { certifications } from "@/components/certifications";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
         <Projects />
         <Experience />
         <Education />
+        <Contact />
         <Footer />
       </main>
     </>

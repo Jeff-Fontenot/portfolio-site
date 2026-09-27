@@ -38,7 +38,7 @@ export default async function BlogIndexPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((p) => (
+              {posts.map((p, i) => (
                 <Link
                   key={p.id}
                   href={`/blog/${p.slug}`}
@@ -51,7 +51,8 @@ export default async function BlogIndexPage() {
                         alt={p.title}
                         width={1200}
                         height={630}
-                        unoptimized={true}
+                        priority={i < 3}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       />
                     </div>

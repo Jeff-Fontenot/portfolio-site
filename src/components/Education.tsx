@@ -125,23 +125,31 @@ export default function Education() {
 
               <div className="space-y-5">
                 <p className="text-white/70 leading-relaxed text-sm">
-                  Designed and deployed containerized services with Docker/Portainer, fronted
-                  by Traefik reverse proxy with automated TLS. Implemented Prometheus/Grafana
-                  monitoring and recursive DNS filtering with PiHole and Unbound, creating a
-                  secure production-style sandbox for testing cloud-native architectures.
+                  Finishing my B.S. in Cloud Computing at WGU opened the door to cloud-native
+                  computing, but it didn&apos;t fully prepare me for the role I actually want.
+                  I&apos;m a builder at heart, and I&apos;d rather engineer systems than
+                  administer them.
+                </p>
+
+                <p className="text-white/70 leading-relaxed text-sm">
+                  So I&apos;ve spent my time outside the service desk deliberately building
+                  muscle memory with the tools WGU didn&apos;t teach: Terraform, Kubernetes,
+                  Ansible, GitHub Actions. Every project on this site exists to close that gap
+                  and move me from service desk support into a Cloud, DevOps, or Platform
+                  Engineering role.
                 </p>
 
                 <div className="rounded-xl bg-white/[0.03] p-4 border-l-2 border-yellow-400/60">
                   <p className="text-white/80 italic mb-2 text-sm leading-relaxed">
-                    {`"Technology is ever progressing, ever changing, and so a career in IT should also be a continuous journey of growth and development. Never stop learning."`}
+                    {`"Every project on this page is practice for the job I haven't been hired for yet."`}
                   </p>
                   <p className="text-yellow-400 font-semibold text-sm">
-                    — Seek Always A New Horizon
+                    Embrace The Journey.
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 pt-1">
-                  {["Proxmox", "Ubuntu Server", "Docker", "Traefik", "Zero Trust", "Prometheus", "Grafana"].map((tag) => (
+                  {["Terraform", "Kubernetes", "Ansible", "GitHub Actions"].map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/70"

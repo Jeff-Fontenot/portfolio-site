@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { fetchBlocksRecursive } from "./notion-blocks";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID!;
@@ -92,17 +93,20 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostsWithPreviews(): Promise<Post[]> {
   const posts = await getPosts();
-  
-  // Add previews to each post
-  const postsWithPreviews = await Promise.all(
+
+  // Prefer the "description" property (already fetched with zero extra API
+  // calls) as the preview text. Only fall back to scanning the page's blocks
+  // — a separate, much slower Notion API call per post — for posts that
+  // don't have a description filled in.
+  return Promise.all(
     posts.map(async (post) => {
+      if (post.description) {
+        return { ...post, preview: post.description };
+      }
       const blocks = await getBlocks(post.id);
-      const preview = extractTextPreview(blocks);
-      return { ...post, preview };
+      return { ...post, preview: extractTextPreview(blocks) };
     })
   );
-  
-  return postsWithPreviews;
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
@@ -122,17 +126,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function getBlocks(pageId: string) {
-  const blocks: any[] = [];
-  let cursor: string | undefined = undefined;
-  while (true) {
-    const res = await notion.blocks.children.list({
-      block_id: pageId,
-      start_cursor: cursor,
-      page_size: 50,
-    });
-    blocks.push(...res.results);
-    if (!res.has_more) break;
-    cursor = res.next_cursor || undefined;
-  }
-  return blocks;
+  return fetchBlocksRecursive(notion, pageId);
+}
+
+export async function getAboutBlocks() {
+  const pageId = process.env.NOTION_ABOUT_PAGE_ID;
+  if (!pageId) return [];
+  return getBlocks(pageId);
 }
