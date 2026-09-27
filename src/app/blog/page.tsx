@@ -7,6 +7,11 @@ import { getPostsWithPreviews } from "@/lib/notion";
 
 export const revalidate = 300;
 
+export const metadata = {
+  title: "Jeff Fontenot | Blog",
+  description: "Insights from an endless journey of growth and discovery.",
+};
+
 function BlogHero() {
   return (
     <section className="relative min-h-[42vh] md:min-h-[50vh] overflow-hidden pt-28">

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "Jeff Fontenot | Cloud & DevOps Engineer",
+  title: "Jeff Fontenot | Portfolio",
   description: "A modern portfolio site for Jeff Fontenot. Currently seeking new opportunities in Cloud and DevOps engineering.",
 };
 

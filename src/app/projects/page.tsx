@@ -8,7 +8,7 @@ import { getProjects } from "@/lib/notion-projects";
 export const revalidate = 300;
 
 export const metadata = {
-  title: "Projects | Jeff Fontenot",
+  title: "Jeff Fontenot | Projects",
   description: "A portfolio index of cloud, DevOps, and automation projects.",
 };
 

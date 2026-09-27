@@ -6,8 +6,8 @@ import { getAboutBlocks } from "@/lib/notion";
 export const revalidate = 300;
 
 export const metadata = {
-  title: "About | Jeff Fontenot",
-  description: "The story behind IT Odyssey — mission, background, and what I'm building next.",
+  title: "Jeff Fontenot | About",
+  description: "The story behind how and why I chose this path | mission, background, and what I'm building next.",
 };
 
 export default async function AboutPage() {
