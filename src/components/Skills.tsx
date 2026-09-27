@@ -21,7 +21,7 @@ export default function Skills() {
             <FadeIn key={skill.name} delay={i * 0.04}>
               <div className="glass-container glass-hover flex w-32 flex-col items-center gap-3 p-5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={skill.icon} alt={skill.name} className="h-10 w-10" />
+                <img src={skill.icon} alt={skill.name} className="h-10 w-10 object-contain" />
                 <span className="text-center text-sm text-white/70">{skill.name}</span>
               </div>
             </FadeIn>
