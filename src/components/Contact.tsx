@@ -13,7 +13,7 @@ export default function Contact() {
           <p className="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto mb-10">
             Based in New Orleans, LA. Open to remote roles in
             <br />
-            <span className="whitespace-nowrap">Cloud, DevOps, and Platform Engineering roles.</span>
+            <span className="whitespace-nowrap">Cloud, DevOps, and Platform Engineering.</span>
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
