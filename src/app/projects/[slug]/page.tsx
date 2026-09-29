@@ -20,10 +20,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }) {
   const project = await getProjectBySlug(params.slug);
   if (!project) return {};
+  const title = `${project.title} | Projects`;
   return {
-    title: `${project.title} | Projects`,
+    title,
     description: project.description,
-    openGraph: { images: project.cover ? [project.cover] : [] },
+    openGraph: {
+      title,
+      description: project.description,
+      images: project.cover ? [project.cover] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.description,
+      images: project.cover ? [project.cover] : [],
+    },
   };
 }
 

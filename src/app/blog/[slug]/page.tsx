@@ -19,10 +19,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }) {
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
+  const title = `${post.title} | Odyssey Blog`;
   return {
-    title: `${post.title} | Odyssey Blog`,
+    title,
     description: post.description,
-    openGraph: { images: post.cover ? [post.cover] : [] },
+    openGraph: {
+      title,
+      description: post.description,
+      images: post.cover ? [post.cover] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: post.description,
+      images: post.cover ? [post.cover] : [],
+    },
   };
 }
 

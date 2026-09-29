@@ -5,9 +5,15 @@ import { getAboutBlocks } from "@/lib/notion";
 
 export const revalidate = 300;
 
+const title = "Jeff Fontenot | About";
+const description =
+  "The story behind how and why I chose this path | mission, background, and what I'm building next.";
+
 export const metadata = {
-  title: "Jeff Fontenot | About",
-  description: "The story behind how and why I chose this path | mission, background, and what I'm building next.",
+  title,
+  description,
+  openGraph: { title, description },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default async function AboutPage() {

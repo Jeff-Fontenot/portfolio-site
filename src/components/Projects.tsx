@@ -24,6 +24,9 @@ const projects = [
     tech: ["Go", "Cobra", "SQLite", "Docker", "Git", "GitHub Actions"],
     link: "https://github.com/it-odyssey/waketrail",
     span: "md:col-span-3",
+    ci: {
+      badge: "https://github.com/it-odyssey/waketrail/actions/workflows/ci.yml/badge.svg",
+    },
   },
   {
     title: "Hybrid Cloud Disaster Recovery",
@@ -69,9 +72,15 @@ export default function Projects() {
                 aria-label={`Open ${project.title} repository`}
                 className="glass-container glass-hover group block h-full cursor-pointer p-8"
               >
-                <h3 className="mb-3 text-xl font-bold text-white transition-colors group-hover:text-yellow-300">
-                  {project.title}
-                </h3>
+                <div className="mb-3 flex flex-wrap items-center gap-3">
+                  <h3 className="text-xl font-bold text-white transition-colors group-hover:text-yellow-300">
+                    {project.title}
+                  </h3>
+                  {project.ci && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={project.ci.badge} alt="CI build status" className="h-5" />
+                  )}
+                </div>
                 <p className="mb-5 text-sm leading-relaxed text-white/60">
                   {project.description}
                 </p>

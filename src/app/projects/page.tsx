@@ -7,9 +7,14 @@ import { getProjects } from "@/lib/notion-projects";
 
 export const revalidate = 300;
 
+const title = "Jeff Fontenot | Projects";
+const description = "A portfolio index of cloud, DevOps, and automation projects.";
+
 export const metadata = {
-  title: "Jeff Fontenot | Projects",
-  description: "A portfolio index of cloud, DevOps, and automation projects.",
+  title,
+  description,
+  openGraph: { title, description },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 function ProjectsHero() {

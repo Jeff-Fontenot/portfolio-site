@@ -7,9 +7,14 @@ import { getPostsWithPreviews } from "@/lib/notion";
 
 export const revalidate = 300;
 
+const title = "Jeff Fontenot | Blog";
+const description = "Insights from an endless journey of growth and discovery.";
+
 export const metadata = {
-  title: "Jeff Fontenot | Blog",
-  description: "Insights from an endless journey of growth and discovery.",
+  title,
+  description,
+  openGraph: { title, description },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 function BlogHero() {
