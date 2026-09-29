@@ -6,6 +6,12 @@ export const certifications: CertItem[] = [
 
 
   {
+   title: "Terraform Associate",
+   subtitle: "HashiCorp",
+   image: "/skills/terraform.svg",
+   status: "in-progress"
+  },
+  {
     title: "CompTIA A+",
     subtitle: "CompTIA",
     image: "/APlus.png",
@@ -58,15 +64,6 @@ export const certifications: CertItem[] = [
     href: "https://www.peoplecert.org/for-corporations/certificate-verification-service",
     issuedOn: "2025-04-13",
     credentialId: "GR671764356JF",
-    status: "earned"
-  },
-  {
-    title: "AWS Certified Cloud Practitioner",
-    subtitle: "Amazon Web Services",
-    image: "AWSCCP.png",
-    href: "https://cp.certmetrics.com/amazon/en/public/verify/credential/b77a643b0f844e2ebb5223b3d84d8342",
-    issuedOn: "2024-09-23",
-    credentialId: "b77a643b0f844e2ebb5223b3d84d8342",
     status: "earned"
   },
   {

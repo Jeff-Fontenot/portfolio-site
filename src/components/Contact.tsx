@@ -11,7 +11,9 @@ export default function Contact() {
             Let&apos;s <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto mb-10">
-            Based in New Orleans, LA. Open to Cloud, DevOps, and Platform Engineering roles.
+            Based in New Orleans, LA. Open to remote roles in
+            <br />
+            <span className="whitespace-nowrap">Cloud, DevOps, and Platform Engineering roles.</span>
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

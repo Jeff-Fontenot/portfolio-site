@@ -122,6 +122,15 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
 
   const initialSlide = findLatestEarnedIndex();
 
+  // List view reads newest-to-oldest regardless of the Badge carousel's order;
+  // undated items (in-progress/planned) surface first as the current focus.
+  const listItems = [...items].sort((a, b) => {
+    if (!a.issuedOn && !b.issuedOn) return 0;
+    if (!a.issuedOn) return -1;
+    if (!b.issuedOn) return 1;
+    return new Date(b.issuedOn).getTime() - new Date(a.issuedOn).getTime();
+  });
+
   return (
     <section className="relative mx-auto w-full max-w-5xl px-8">
       {/* Header */}
@@ -210,7 +219,7 @@ export default function SwiperBadges({ items }: { items: CertItem[] }) {
         /* List View - Single Glass Container */
         <div className="glass-container p-6 h-auto">
           <div className="space-y-2">
-            {items.map((item, index) => (
+            {listItems.map((item, index) => (
               <div key={index} className="flex items-center justify-between py-3 border-b border-white/10 last:border-b-0">
                 <div className="flex items-center gap-4 flex-1">
                   {/* Small Badge Icon */}

@@ -54,7 +54,7 @@ export default function Experience() {
             <h3 className="text-2xl font-bold text-white mb-1.5">
               Enterprise Service Desk Analyst
             </h3>
-            <p className="text-lg text-yellow-400 mb-1">
+            <p className="text-lg accent-blue mb-1">
               TEKsystems supporting Leidos &middot; Marine Corps Enterprise Network
             </p>
             <p className="text-white/50 text-sm">Jan 2025 – Present</p>
