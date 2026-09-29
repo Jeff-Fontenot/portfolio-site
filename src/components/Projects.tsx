@@ -1,7 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import FadeIn from "./FadeIn";
+
+// Fetches live data client-side, so its server-rendered skeleton never matches
+// the client output — skip SSR for it entirely rather than fight a hydration mismatch.
+const GitHubActivity = dynamic(() => import("./GitHubActivity"), { ssr: false });
 
 const projects = [
   {
@@ -84,6 +89,10 @@ export default function Projects() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={projects.length * 0.08} className="w-full">
+          <GitHubActivity />
+        </FadeIn>
       </div>
     </section>
   );
