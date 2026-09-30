@@ -48,7 +48,7 @@ function DegreeCard({
   return (
     <FadeIn delay={delay} className="lg:flex-1">
       <div className="glass-container glass-hover h-full p-6">
-        <div className="flex h-full flex-col items-center gap-5 rounded-xl border-l-2 border-yellow-400/60 bg-white/[0.03] p-4 sm:flex-row sm:items-start">
+        <div className="flex h-full flex-col items-center gap-5 rounded-xl border-l-2 border-yellow-400/60 p-4 sm:flex-row sm:items-start">
           <button
             type="button"
             onClick={() => onView({ src: image, alt })}
@@ -139,7 +139,7 @@ export default function Education() {
                   Engineering role.
                 </p>
 
-                <div className="rounded-xl bg-white/[0.03] p-4 border-l-2 border-yellow-400/60">
+                <div className="rounded-xl p-4 border-l-2 border-yellow-400/60">
                   <p className="text-white/80 italic mb-2 text-sm leading-relaxed">
                     {`"Every project on this page is practice for the job I haven't been hired for yet."`}
                   </p>

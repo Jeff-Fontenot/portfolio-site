@@ -18,7 +18,7 @@ function scrapeStatus(percent: number | null | undefined): HomelabStatus {
 }
 
 const STATUS_LABEL: Record<HomelabStatus, string> = {
-  healthy: "All systems normal",
+  healthy: "Monitored Services Healthy",
   warning: "Degraded",
   critical: "Attention needed",
   stale: "Stale data",
@@ -162,6 +162,10 @@ export default function HomelabTelemetry() {
           </div>
         </div>
       )}
+
+      <p className="mt-6 border-t border-white/10 pt-4 text-sm text-white/60">
+        Sanitized Prometheus metrics streamed through Grafana Alloy and rendered live from Grafana Cloud.
+      </p>
     </div>
   );
 }
