@@ -15,10 +15,10 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <Hero />
-        <Skills />
-        <Certifications />
         <Projects />
         <Experience />
+        <Skills />
+        <Certifications />
         <Education />
         {/* <MediaChannels /> */}
         <Contact />
