@@ -4,8 +4,10 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import FadeIn from "./FadeIn";
 
-// Fetches live data client-side, so its server-rendered skeleton never matches
-// the client output — skip SSR for it entirely rather than fight a hydration mismatch.
+// Both fetch live data client-side, so their server-rendered skeleton never
+// matches the client output — skip SSR for them entirely rather than fight
+// a hydration mismatch.
+const HomelabTelemetry = dynamic(() => import("./HomelabTelemetry"), { ssr: false });
 const GitHubActivity = dynamic(() => import("./GitHubActivity"), { ssr: false });
 
 const projects = [
@@ -100,6 +102,10 @@ export default function Projects() {
         </div>
 
         <FadeIn delay={projects.length * 0.08} className="w-full">
+          <HomelabTelemetry />
+        </FadeIn>
+
+        <FadeIn delay={(projects.length + 1) * 0.08} className="w-full">
           <GitHubActivity />
         </FadeIn>
       </div>
