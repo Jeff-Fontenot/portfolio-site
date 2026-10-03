@@ -12,15 +12,17 @@ const GitHubActivity = dynamic(() => import("./GitHubActivity"), { ssr: false })
 
 const projects = [
   {
-    title: "Kubernetes Platform",
+    title: "Ops-Status: Cloud-Native Service Monitoring",
+    Status: "in-progress",
     description:
-      "Deployed a production-style k3s cluster with AWS-hosted master and homelab worker nodes. Automated provisioning and security groups using Terraform. Integrated Prometheus & Grafana for real-time monitoring and alerting, demonstrating hybrid-cloud resiliency and observability.",
-    tech: ["Kubernetes", "Terraform", "Ansible"],
+      "An evolving FastAPI service designed to monitor homelab availability, health, and response time. The working API is containerized with Docker and Compose, with the delivery roadmap extending through automated testing, GitHub Actions CI/CD, k3s deployment, and Prometheus/Grafana observability.",
+    tech: ["Docker Compose", "Python", "FastAPI"],
     link: "https://github.com/Jeff-Fontenot",
     span: "md:col-span-2",
   },
   {
     title: "WakeTrail",
+    Status: "in-progress",
     description:
       "Built a Go-based CLI that records engineering activity and correlates it with the infrastructure state changes that follow, creating a forensic timeline for troubleshooting and incident response. Captures Git context, command execution, and Docker state transitions into a local SQLite event store, with CI enforcing formatting, vetting, and test coverage on every push.",
     tech: ["Go", "Cobra", "SQLite", "Docker", "Git", "GitHub Actions"],
@@ -32,6 +34,7 @@ const projects = [
   },
   {
     title: "Hybrid Cloud Disaster Recovery",
+    Status: "completed",
     description:
       "Engineered a hybrid disaster-recovery solution for a containerized Flask/PostgreSQL application running on-prem in Proxmox, with hourly backups shipped to Amazon S3. A single terraform apply provisions AWS recovery infrastructure through an IAM instance profile and automatically restores the database, validated at roughly a 1-hour RPO and a 3:55 RTO.",
     tech: ["Terraform", "AWS", "EC2", "S3", "Docker", "PostgreSQL", "Flask"],
@@ -40,8 +43,9 @@ const projects = [
   },
   {
     title: "Menu-Based PowerShell Automation",
+    Status: "completed",
     description:
-      "Developed a modular PowerShell tool adopted by coworkers to streamline user, printer, and workstation lookups in Active Directory. Saved 2-3 minutes per call, reducing daily ticket resolution time across the team and reinforcing repeatable documentation practices.",
+      "Built a PowerShell tool that queries Active Directory to give service desk analysts a ticket-ready summary of user, workstation, and printer details from one menu, replacing repeated lookups across several admin screens. Tiered search (exact, prefix, contains) with an interactive picker for ambiguous matches. Ran with read-only access and reached at least 12 analysts.",
     tech: ["PowerShell", "Active Directory"],
     link: "https://github.com/Jeff-Fontenot/ESD_Summary_Tool.git",
     span: "md:col-span-2",

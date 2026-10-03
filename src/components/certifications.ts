@@ -112,7 +112,7 @@ export const certifications: CertItem[] = [
     status: "earned"
   },
   {
-    title: "AWS CloudOps Administrator Associate",
+    title: "AWS CloudOps Engineer Associate",
     subtitle: "Amazon Web Services", 
     image: "CloudOps.png",
     href: "https://www.credly.com/badges/3a32a178-03ce-4432-8a55-1c1c3fb53ca2/public_url",
